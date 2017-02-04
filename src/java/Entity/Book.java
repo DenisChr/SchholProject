@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package EJB;
+package Entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Boek.findByRichting", query = "SELECT b FROM Boek b WHERE b.richting = :richting")
     , @NamedQuery(name = "Boek.findByIsbn", query = "SELECT b FROM Boek b WHERE b.isbn = :isbn")
     , @NamedQuery(name = "Boek.findByNieuwprijs", query = "SELECT b FROM Boek b WHERE b.nieuwprijs = :nieuwprijs")})
-public class Boek implements Serializable {
+public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,10 +60,10 @@ public class Boek implements Serializable {
     @Column(name = "nieuwprijs")
     private Double nieuwprijs;
 
-    public Boek() {
+    public Book() {
     }
 
-    public Boek(Integer id) {
+    public Book(Integer id) {
         this.id = id;
     }
 
@@ -133,10 +133,10 @@ public class Boek implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Boek)) {
+        if (!(object instanceof Book)) {
             return false;
         }
-        Boek other = (Boek) object;
+        Book other = (Book) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
