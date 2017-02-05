@@ -61,9 +61,21 @@ public class User implements Serializable {
     public User() {
     }
 
+    public User(String naam, String voornaam, String email, String wachtwoord, String gsm) {
+        this.naam = naam;
+        this.voornaam = voornaam;
+        this.email = email;
+        this.wachtwoord = wachtwoord;
+        this.gsm = gsm;
+    }
+    
+    
+
     public User(Integer id) {
         this.id = id;
     }
+
+
 
     public Integer getId() {
         return id;

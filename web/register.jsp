@@ -18,7 +18,7 @@
 <form action="/SchoolProjectWeb/RegisterServlet" method="post">
 <strong>Voornaam</strong>: <input type="text" name="firstName"><br>
 <strong>Achternaam</strong>: <input type="text" name="lastName"><br>
-<strong>GSM-nummer</strong>: <input type="text" name="phoneNumeber"><br>
+<strong>GSM-nummer</strong>: <input type="text" name="phoneNumber"><br>
 <strong>Email</strong>: <input type="text" name="email"><br>
 <strong>Wachtwoord</strong>: <input type="password" name="password"><br>
 <input type="submit" value="Registreer">
