@@ -6,7 +6,6 @@
 package EJB;
 
 import Entity.User;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,16 +17,22 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class UserBean {
     
- @PersistenceContext
+    @PersistenceContext(unitName = "SchoolProjectWebPU")
     private EntityManager em;
-    public boolean checkUser(String email, String wachtwoord) {
-       
-        List<User> s = (List<User>)em.createQuery("select e from Login e where e.email='"+email+"' and e.wachtwoord='"+wachtwoord+"'").getResultList();
-      System.out.println("is list empty ?"+s.isEmpty()+" for the"+email+" and "+wachtwoord);
-       
-      if(!s.isEmpty())
-       return true;
-       else
-        return false;
-    }
+    
+    public User getGebruiker(String email, String password) {
+        User user = null;
+        
+        try {
+            user = (User) em.createNativeQuery("SELECT * FROM tbl_gebruikers WHERE Email = '" + email + "' AND Wachtwoord = '"+ password + "'", User.class).getSingleResult();
+        } catch (Exception e) {
+            /**
+             *  SingleResult returns een exception als hij leeg is 
+             *  hierdoor kon ik deze opvangen indien leeg return ik de user als null
+             *  en hierop controleerd mijn servlet voor de gebruiker in te loggen of niet
+             */ 
+        }
+        
+        return user;
+    } 
 }
