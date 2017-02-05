@@ -26,14 +26,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "tbl_boeken")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Boek.findAll", query = "SELECT b FROM Boek b")
-    , @NamedQuery(name = "Boek.findById", query = "SELECT b FROM Boek b WHERE b.id = :id")
-    , @NamedQuery(name = "Boek.findByTitel", query = "SELECT b FROM Boek b WHERE b.titel = :titel")
-    , @NamedQuery(name = "Boek.findByAuteur", query = "SELECT b FROM Boek b WHERE b.auteur = :auteur")
-    , @NamedQuery(name = "Boek.findByVak", query = "SELECT b FROM Boek b WHERE b.vak = :vak")
-    , @NamedQuery(name = "Boek.findByRichting", query = "SELECT b FROM Boek b WHERE b.richting = :richting")
-    , @NamedQuery(name = "Boek.findByIsbn", query = "SELECT b FROM Boek b WHERE b.isbn = :isbn")
-    , @NamedQuery(name = "Boek.findByNieuwprijs", query = "SELECT b FROM Boek b WHERE b.nieuwprijs = :nieuwprijs")})
+    @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
+    , @NamedQuery(name = "Book.findById", query = "SELECT b FROM Book b WHERE b.id = :id")
+    , @NamedQuery(name = "Book.findByTitel", query = "SELECT b FROM Book b WHERE b.titel = :titel")
+    , @NamedQuery(name = "Book.findByAuteur", query = "SELECT b FROM Book b WHERE b.auteur = :auteur")
+    , @NamedQuery(name = "Book.findByVak", query = "SELECT b FROM Book b WHERE b.vak = :vak")
+    , @NamedQuery(name = "Book.findByRichting", query = "SELECT b FROM Book b WHERE b.richting = :richting")
+    , @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn")
+    , @NamedQuery(name = "Book.findByNieuwprijs", query = "SELECT b FROM Book b WHERE b.nieuwprijs = :nieuwprijs")})
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,6 +61,16 @@ public class Book implements Serializable {
     private Double nieuwprijs;
 
     public Book() {
+    }
+    
+    public Book(int id, String titel, String auteur, String vak, String richting, int isbn, double nieuwprijs) {
+        this.id = id;
+        this.titel = titel;
+        this.auteur = auteur;
+        this.vak = vak;
+        this.richting = richting;
+        this.isbn = isbn;
+        this.nieuwprijs = nieuwprijs;
     }
 
     public Book(Integer id) {
@@ -145,7 +155,7 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "EJB.Boek[ id=" + id + " ]";
+        return "Entity.Book[ id=" + id + " ]";
     }
     
 }

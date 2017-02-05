@@ -31,7 +31,7 @@
              </div>
              <div class="row">
                 <div class="input-field col s6">
-                 <input  name="password" id="password" type="password" class="validate">
+                 <input  name="wachtwoord" id="password" type="password" class="validate">
                     <label class="active" for="password">Uw wachtwoord: </label>
                 </div>
              </div>
@@ -43,7 +43,7 @@
       </div>
       <div class="row">
         <div class="col s12">
-                  Als u nog niet geregistreerd bent klik dan <a href="Register.jsp">hier</a>.
+                  Als u nog niet geregistreerd bent klik dan <a href="register.jsp">hier</a>.
        </div>
       </div>
     </form>

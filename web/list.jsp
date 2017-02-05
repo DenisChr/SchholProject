@@ -18,22 +18,11 @@
         <h1>List</h1>
     <ul class="itemWrapper">
 
-<%  // indien dat de sessie bvb verlopen is haal ik de films terug op
-    // als ze nog in session zitten gebruik ik ze gwn terug
-    Object objBooks = request.getSession().getAttribute("books");
-    if (objBooks == null) {
-        RequestDispatcher rd = request.getRequestDispatcher("BookServlet");
-        rd.forward(request, response);
-    } else { 
-        List<Book> lst = (List<Book>) objBooks; 
-        for (Book b : lst) { %>
-            <li class="items"> 
-                <%= b.getPassword()%>
-                
-                <a href="UserServlet?Id=<%= b.getPassword()%>" class="itemText"><%= b.getUserName()%></a>
-            </li>
-        <% } 
-    } %>
+<%
+            Book book = (Book)session.getAttribute("books");
+        %>
+        
+        <%= book.getTitel() %>
 
     </ul>
     </body>
