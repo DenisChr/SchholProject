@@ -9,7 +9,7 @@
         <servlet-class>Servlets.LoginServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BoekServlet</servlet-name>
+        <servlet-name>BookServlet</servlet-name>
         <servlet-class>Servlets.BookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -21,8 +21,8 @@
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BoekServlet</servlet-name>
-        <url-pattern>/BoekServlet</url-pattern>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/BookServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

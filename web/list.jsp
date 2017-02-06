@@ -1,26 +1,36 @@
- 
-
-<%@page import="Servlets.BookServlet"%>
-<%@page import="Entity.Book"%>
 <%@page import="java.util.List"%>
-<ul class="itemWrapper">
+<%@page import="Entity.Book"%>
 
-<%  // indien dat de sessie bvb verlopen is haal ik de films terug op
-    // als ze nog in session zitten gebruik ik ze gwn terug
-    Object objBooks = request.getSession().getAttribute("books");
-    if (objBooks == null) {
-        RequestDispatcher rd = request.getRequestDispatcher("Servlets/BookServlet");
-        rd.forward(request, response);
-    } else { 
-        List<Book> lst = (List<Book>) objBooks; 
-        for (Book b : lst) { %>
-            <li class="items"> 
-                <% 
-                    
-                   b.getTitel();
-                %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+
+        <% 
+            Object tempLst = request.getSession().getAttribute("books");
+            /**
+             *  als de session verlopen is redirect ik naar de servlet om terug de data op te halen
+             *  anders blijf ik op deze pagina met parameter id "spelen" zolang mogelijk
+             */
+            if (tempLst == null) {
+                response.sendRedirect("SchoolProjectWeb/BookServlet.java");
+            } else {
+                List<Book> lst = (List<Book>) tempLst;
+        %> 
+        <ul class="itemWrapper padbot0">
+        <%
+            for (Book book : lst) { %>
+            <li class="items trailerItems">   
+                <a  class="itemText"><%= book.getTitel()%></a>
             </li>
-        <% } 
-    } %>
-
-    </ul>
+            <%  }    
+        } %>
+        </ul>
+        
+        
+    </body>
+</html>

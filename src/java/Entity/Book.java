@@ -63,15 +63,7 @@ public class Book implements Serializable {
     public Book() {
     }
     
-    public Book(int id, String titel, String auteur, String vak, String richting, int isbn, double nieuwprijs) {
-        this.id = id;
-        this.titel = titel;
-        this.auteur = auteur;
-        this.vak = vak;
-        this.richting = richting;
-        this.isbn = isbn;
-        this.nieuwprijs = nieuwprijs;
-    }
+
 
     public Book(Integer id) {
         this.id = id;

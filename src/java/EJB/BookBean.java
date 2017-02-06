@@ -29,8 +29,10 @@ public class BookBean {
     }
     
     public List<Book> getAllBooks(){
-        Query query = em.createNamedQuery("Book.findAll");
-        List<Book> resultList = query.getResultList();
+        List<Book> resultList = null;
+        
+        Query q = em.createNamedQuery("Book.findAll");
+        resultList = q.getResultList();
         return resultList;
     }
 }

@@ -1,8 +1,5 @@
-<%-- 
-    Document   : good
-    Created on : Feb 5, 2017, 8:44:20 PM
-    Author     : DenisRemote
---%>
+<%@page import="java.util.List"%>
+<%@page import="Entity.Book"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +9,28 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
+        <% 
+            Object tempLst = request.getSession().getAttribute("books");
+            /**
+             *  als de session verlopen is redirect ik naar de servlet om terug de data op te halen
+             *  anders blijf ik op deze pagina met parameter id "spelen" zolang mogelijk
+             */
+            if (tempLst == null) {
+                response.sendRedirect("BookServlet");
+            } else {
+                List<Book> lst = (List<Book>) tempLst;
+        %> 
+        <ul class="itemWrapper padbot0">
+        <%
+            for (Book book : lst) { %>
+            <li class="items trailerItems">   
+                <a  class="itemText"><%= book.getTitel()%></a>
+            </li>
+            <%  }    
+        } %>
+        </ul>
+        
+        
     </body>
 </html>
