@@ -17,7 +17,7 @@
              *  anders blijf ik op deze pagina met parameter id "spelen" zolang mogelijk
              */
             if (tempLst == null) {
-                response.sendRedirect("SchoolProjectWeb/BookServlet.java");
+                response.sendRedirect("BookServlet.java");
             } else {
                 List<Book> lst = (List<Book>) tempLst;
         %> 
