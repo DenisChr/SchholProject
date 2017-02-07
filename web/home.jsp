@@ -1,5 +1,8 @@
-<%@page import="java.util.List"%>
-<%@page import="Entity.Book"%>
+<%-- 
+    Document   : home
+    Created on : Jan 24, 2017, 9:49:19 PM
+    Author     : DenisRemote
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,28 +10,17 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home</title>
     </head>
-    <body background="images/main.jpg">      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-        <h1 align="center"> <span class="teal-text text-darken-2  "> Welcome <%=session.getAttribute("user")%> </span></h1>
-        <div class="container">
-        <div class="collection">
-            <%
-                Object tempLst = request.getSession().getAttribute("books");
-                if (tempLst == null) {
-                    response.sendRedirect("BookServlet");
-                } else {
-                    List<Book> lst = (List<Book>) tempLst;
-            %> 
 
-            <%
-            for (Book book : lst) {%>
-            <a href="#!" class="collection-item">
-                <%= book.getTitel() + "  door:  " + book.getAuteur() + " / " + book.getVak() %></a>
-            <%  }
-                }%>
-        </div>
+    <body background="images/main.jpg">     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col s12"><h2 align="center"> <span class="cyan-text text-lighten-2  "> Welkom <%=session.getAttribute("user")%> ! </span></h2></div>
+                <div class="col s6"><h4><a href="list.jsp"><span class="cyan-text text-darken-2  ">Klik hier als u een tweedehandsboek wil </span><span class="cyan-text text-lighten-2  ">verkopen.</span></a></h4></div>
+                <div class="col s6"><h4><a href="error.jsp"><span class="cyan-text text-darken-2  ">Klik hier als u een tweedehandsboek wil </span><span class="cyan-text text-lighten-2  ">kopen.</span></a></h4></div>             
+            </div>   
         </div>
     </body>
 </html>
