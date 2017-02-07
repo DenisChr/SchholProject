@@ -1,11 +1,5 @@
 <%-- 
     Document   : login
-    Created on : Feb 4, 2017, 5:59:06 PM
-    Author     : DenisRemote
---%>
-
-<%-- 
-    Document   : login
     Created on : Jan 24, 2017, 9:49:19 PM
     Author     : DenisRemote
 --%>
