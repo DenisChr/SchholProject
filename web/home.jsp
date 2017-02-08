@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col s12"><h2 align="center"> <span class="cyan-text text-lighten-2  "> Welkom <%=session.getAttribute("user")%> ! </span></h2></div>
                 <div class="col s6"><h4><a href="list.jsp"><span class="cyan-text text-darken-2  ">Klik hier als u een tweedehandsboek wil </span><span class="cyan-text text-lighten-2  ">verkopen.</span></a></h4></div>
-                <div class="col s6"><h4><a href="error.jsp"><span class="cyan-text text-darken-2  ">Klik hier als u een tweedehandsboek wil </span><span class="cyan-text text-lighten-2  ">kopen.</span></a></h4></div>             
+                <div class="col s6"><h4><a href="listForSale.jsp"><span class="cyan-text text-darken-2  ">Klik hier als u een tweedehandsboek wil </span><span class="cyan-text text-lighten-2  ">kopen.</span></a></h4></div>             
             </div>   
         </div>
     </body>

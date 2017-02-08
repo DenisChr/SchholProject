@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author DenisRemote
  */
 package EJB;
 
@@ -12,37 +11,34 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- *
- * @author DenisRemote
- */
 @Stateless
 public class SaleBookBean {
 
-
-      @PersistenceContext(unitName = "SchoolProjectWebPU")
+@PersistenceContext(unitName = "SchoolProjectWebPU")
     private EntityManager em;
+
+    public boolean PutOnSale(Integer boek_id, Integer user_id,String conditie, Double prijs) {
+    
         
-    
-    public AangebodenBoek SellBook(AangebodenBoek book){
-        em.persist(book);
-        return book;
+        Query q = em.createNativeQuery(
+        "SELECT * from tbl_aangebodenboeken WHERE tbl_aangebodenboeken.iduser = '" + user_id + "' AND WHERE tbl_aangebodenboeken.idaangebodenboeken = '" + boek_id + "'");
+        List lst = q.getResultList();
+        
+        if (lst.isEmpty()) {
+            
+            em.persist(new AangebodenBoek(prijs, conditie, user_id, boek_id));
+
+            return true;
+        } else {
+            return false;
+        }
     }
-    
-    public AangebodenBoek RemoveBook(AangebodenBoek book){
-        em.remove(book);
-        return book;
-    }  
-    
-        public List<AangebodenBoek> getAllSellBooks(){
+    public List<AangebodenBoek> getAllSellBooks(){
         List<AangebodenBoek> resultList = null;
         
-        Query q = em.createNamedQuery("AangebodenBoek.findAll");
+        Query q = em.createNamedQuery("AangeboedenBoek.findAll");
         resultList = q.getResultList();
         return resultList;
     }
-        
-            public AangebodenBoek FindSaleBookByID(int id) {
-        return em.find(AangebodenBoek.class, id);
-    }
+
 }

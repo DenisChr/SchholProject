@@ -12,12 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -33,7 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "AangebodenBoek.findByIdaangebodenboeken", query = "SELECT a FROM AangebodenBoek a WHERE a.idaangebodenboeken = :idaangebodenboeken")
     , @NamedQuery(name = "AangebodenBoek.findByAangebodenprijs", query = "SELECT a FROM AangebodenBoek a WHERE a.aangebodenprijs = :aangebodenprijs")
     , @NamedQuery(name = "AangebodenBoek.findByConditie", query = "SELECT a FROM AangebodenBoek a WHERE a.conditie = :conditie")
-    , @NamedQuery(name = "AangebodenBoek.findByIduser", query = "SELECT a FROM AangebodenBoek a WHERE a.iduser = :iduser")})
+    , @NamedQuery(name = "AangebodenBoek.findByIduser", query = "SELECT a FROM AangebodenBoek a WHERE a.iduser = :iduser")
+    , @NamedQuery(name = "AangebodenBoek.findByIdboek", query = "SELECT a FROM AangebodenBoek a WHERE a.idboek = :idboek")})
 public class AangebodenBoek implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,13 +46,10 @@ public class AangebodenBoek implements Serializable {
     @Size(max = 45)
     @Column(name = "conditie")
     private String conditie;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "iduser")
-    private int iduser;
-    @JoinColumn(name = "idboek", referencedColumnName = "id")
-    @OneToOne(optional = false)
-    private Book idboek;
+    private Integer iduser;
+    @Column(name = "idboek")
+    private Integer idboek;
 
     public AangebodenBoek() {
     }
@@ -63,10 +58,14 @@ public class AangebodenBoek implements Serializable {
         this.idaangebodenboeken = idaangebodenboeken;
     }
 
-    public AangebodenBoek(Integer idaangebodenboeken, int iduser) {
-        this.idaangebodenboeken = idaangebodenboeken;
+    public AangebodenBoek(Double aangebodenprijs, String conditie, Integer iduser, Integer idboek) {
+        this.aangebodenprijs = aangebodenprijs;
+        this.conditie = conditie;
         this.iduser = iduser;
+        this.idboek = idboek;
     }
+
+ 
 
     public Integer getIdaangebodenboeken() {
         return idaangebodenboeken;
@@ -92,19 +91,19 @@ public class AangebodenBoek implements Serializable {
         this.conditie = conditie;
     }
 
-    public int getIduser() {
+    public Integer getIduser() {
         return iduser;
     }
 
-    public void setIduser(int iduser) {
+    public void setIduser(Integer iduser) {
         this.iduser = iduser;
     }
 
-    public Book getIdboek() {
+    public Integer getIdboek() {
         return idboek;
     }
 
-    public void setIdboek(Book idboek) {
+    public void setIdboek(Integer idboek) {
         this.idboek = idboek;
     }
 
@@ -131,10 +130,6 @@ public class AangebodenBoek implements Serializable {
     @Override
     public String toString() {
         return "Entity.AangebodenBoek[ idaangebodenboeken=" + idaangebodenboeken + " ]";
-    }
-    
-        public void setUserId(User Iduser) {
-        this.iduser = iduser;
     }
     
 }

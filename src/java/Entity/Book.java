@@ -7,7 +7,6 @@ package Entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,9 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn")
     , @NamedQuery(name = "Book.findByNieuwprijs", query = "SELECT b FROM Book b WHERE b.nieuwprijs = :nieuwprijs")})
 public class Book implements Serializable {
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idboek")
-    private AangebodenBoek aangebodenBoek;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -67,17 +62,6 @@ public class Book implements Serializable {
 
     public Book() {
     }
-
-    public Book(String titel, String auteur, String vak, String richting, Integer isbn, Double nieuwprijs) {
-        this.titel = titel;
-        this.auteur = auteur;
-        this.vak = vak;
-        this.richting = richting;
-        this.isbn = isbn;
-        this.nieuwprijs = nieuwprijs;
-    }
-    
-
 
     public Book(Integer id) {
         this.id = id;
@@ -162,14 +146,6 @@ public class Book implements Serializable {
     @Override
     public String toString() {
         return "Entity.Book[ id=" + id + " ]";
-    }
-
-    public AangebodenBoek getAangebodenBoek() {
-        return aangebodenBoek;
-    }
-
-    public void setAangebodenBoek(AangebodenBoek aangebodenBoek) {
-        this.aangebodenBoek = aangebodenBoek;
     }
     
 }

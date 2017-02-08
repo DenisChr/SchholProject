@@ -32,7 +32,7 @@ public class AangebodenBoekServlet extends HttpServlet {
 
         List<AangebodenBoek> allSaleBooks = saleBookBean.getAllSellBooks();
         request.getSession().setAttribute("salebooks", allSaleBooks);     
-        RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("listForSale.jsp");
         rd.forward(request, response);
         
         

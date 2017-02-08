@@ -1,50 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author DenisRemote
  */
 package Servlets;
 
 import EJB.BookBean;
 import EJB.SaleBookBean;
-import Entity.AangebodenBoek;
-import Entity.User;
 import java.io.IOException;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author DenisRemote
- */
-public class TransactionServlet extends HttpServlet {
+public class TransServlet extends HttpServlet {
 
-        @EJB
+    @EJB
     private BookBean bookBean;
     private SaleBookBean saleBookBean;
-        
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AangebodenBoek book = new AangebodenBoek();
-        
-        book.setIdboek(bookBean.FindBookByID(Integer.parseInt(request.getParameter("book_id"))));
-        book.setUserId((User)request.getSession().getAttribute("user"));
-        book.setAangebodenprijs(Double.parseDouble(request.getParameter("price")));
-        book.setConditie(request.getParameter("condition"));
-        saleBookBean.SellBook(book);
-        //LoginUser(request.getParameter("username"), request.getParameter("password"));
+
+        Integer boek_id = Integer.parseInt(request.getParameter("book_id"));
+        Integer user_id = Integer.parseInt(request.getParameter("userID"));
+        String conditie = request.getParameter("condition");
+        Double prijs = Double.parseDouble(request.getParameter("price"));
+
+        boolean sale = saleBookBean.PutOnSale(boek_id, user_id, conditie, prijs);
+        if (!sale) {
+            request.setAttribute("error", "Can not put book on sale.");
+            RequestDispatcher rd = request.getRequestDispatcher("sold.jsp");
+            rd.forward(request, response);
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -10,14 +10,14 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Page</title>
+        <title>Register Page</title>
     </head>
 
     <body background="images/main.jpg">     
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
         <h2 align="center"> <span class="cyan-text text-lighten-2  "> Registratieformulier</span></h2>
 
-        <form action="/SchoolProjectWeb/RegisterServlet" method="post">
+        <form action="RegisterServlet" method="post">
             <div class="collection">
                 <div class="container">
                     <div class="row">

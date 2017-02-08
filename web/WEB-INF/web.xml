@@ -20,6 +20,10 @@
         <servlet-name>TransactionServlet</servlet-name>
         <servlet-class>Servlets.TransactionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TransServlet</servlet-name>
+        <servlet-class>Servlets.TransServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>TransactionServlet</servlet-name>
         <url-pattern>/TransactionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransServlet</servlet-name>
+        <url-pattern>/TransServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
