@@ -133,4 +133,8 @@ public class AangebodenBoek implements Serializable {
         return "Entity.AangebodenBoek[ idaangebodenboeken=" + idaangebodenboeken + " ]";
     }
     
+        public void setUserId(User Iduser) {
+        this.iduser = iduser;
+    }
+    
 }

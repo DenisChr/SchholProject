@@ -35,4 +35,7 @@ public class BookBean {
         resultList = q.getResultList();
         return resultList;
     }
+        public Book FindBookByID(int id) {
+        return em.find(Book.class, id);
+    }
 }

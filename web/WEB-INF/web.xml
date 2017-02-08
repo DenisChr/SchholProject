@@ -12,6 +12,14 @@
         <servlet-name>BookServlet</servlet-name>
         <servlet-class>Servlets.BookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AangebodenBoekServlet</servlet-name>
+        <servlet-class>Servlets.AangebodenBoekServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TransactionServlet</servlet-name>
+        <servlet-class>Servlets.TransactionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>BookServlet</servlet-name>
         <url-pattern>/BookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AangebodenBoekServlet</servlet-name>
+        <url-pattern>/AangebodenBoekServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TransactionServlet</servlet-name>
+        <url-pattern>/TransactionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
