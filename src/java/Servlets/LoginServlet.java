@@ -29,7 +29,8 @@ public class LoginServlet extends HttpServlet {
         User user = userBean.getGebruiker(email, password);
         if (user != null) {
             request.getSession().setAttribute("user", user.getVoornaam()+" " + user.getNaam());
-            RequestDispatcher rd = request.getRequestDispatcher("good.jsp");
+            request.getSession().setAttribute("userID", user.getId());
+            RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
             rd.forward(request, response);
         }   
         else {

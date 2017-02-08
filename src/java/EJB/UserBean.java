@@ -6,6 +6,7 @@
 package EJB;
 
 import Entity.User;
+import static java.lang.System.out;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,17 +21,15 @@ public class UserBean {
     @PersistenceContext(unitName = "SchoolProjectWebPU")
     private EntityManager em;
     
+    
     public User getGebruiker(String email, String password) {
         User user = null;
         
         try {
             user = (User) em.createNativeQuery("SELECT * FROM tbl_gebruikers WHERE Email = '" + email + "' AND Wachtwoord = '"+ password + "'", User.class).getSingleResult();
-        } catch (Exception e) {
-            /**
-             *  SingleResult returns een exception als hij leeg is 
-             *  hierdoor kon ik deze opvangen indien leeg return ik de user als null
-             *  en hierop controleerd mijn servlet voor de gebruiker in te loggen of niet
-             */ 
+        } catch (Exception ex) 
+        {
+                        out.println(ex);
         }
         
         return user;
