@@ -17,7 +17,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
         <div class="container">            
         <div class="row">
-                <div class="col s12"><h2> <span class="cyan-text text-lighten-2  "> Oei! Er is iets misgegaan. </span></h2></div>
+                <div class="col s12"><h2 align="center"> <span class="cyan-text text-lighten-2  "> Oei! Er is iets misgegaan. </span></h2></div>
                 <div class="col s6"><h5><a href="login.jsp"><span class="cyan-text text-darken-2  ">Klik hier om terug te gaan naar het loginscherm. </span></a></h5></div>
                 <div class="col s6"><h5><a href="register.jsp"><span class="cyan-text text-darken-2  ">Klik hier om u te registreren. </span></a></h5></div>             
             </div> 
